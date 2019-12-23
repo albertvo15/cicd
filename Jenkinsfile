@@ -14,8 +14,11 @@ node {
     }
 
     stage('build-image') {
-\\        sh 'docker build -t test:v1.0.0 .'
-        def dockerImage = docker.build("test:${env.BUILD_ID}")
+        steps{    script {
+           def dockerImage = docker.build("test:${env.BUILD_ID}")
+           }
+        }
+
     }
     
     stage('Deploy Image') {
