@@ -22,6 +22,7 @@ node {
           bat "docker login -u $USER -p $PASSWORD ${registry_url}"
           docker.withRegistry("http://${registry_url}", "docker-hub-credentials") {
             // Push your image now
+            // Docker plugin
             bat "docker push albertvo/test:latest"
           }
     }
