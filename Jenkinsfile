@@ -2,6 +2,7 @@ node {
     environment {
       registry = "albertvo/test"
       registryCredential = ‘docker-hub-credentials’
+      dockerImage = ''
     }
     checkout scm
     stage('start') {
@@ -13,12 +14,10 @@ node {
     }
 
     stage('build-image') {
-        sh 'docker build -t test:v1.0.0 .'
+\\        sh 'docker build -t test:v1.0.0 .'
+        def dockerImage = docker.build("test:${env.BUILD_ID}")
     }
     
-    stage('tag-image') {
-        sh 'docker tag test:v1.0.0 albertvo/test:v1.0.0'
-    }
     stage('Deploy Image') {
         steps{    script {
            docker.withRegistry( '', registryCredential ) {
