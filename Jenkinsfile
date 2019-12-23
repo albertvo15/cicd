@@ -15,13 +15,6 @@ node {
     stage('tag-image') {
         sh 'docker tag test:v1.0.0 albertvo/test:latest'
     }
-    stage('push-image') {
-\\      steps {
- \\       withDockerRegistry([ credentialsId: "docker-hub-credentials", url: "" ]) {
-          sh 'docker push albertvo/test:latest'
-  \\      }
-      }
-    }
     
     archiveArtifacts 'properties'
 }
