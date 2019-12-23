@@ -14,11 +14,7 @@ node {
     }
 
     stage('build-image') {
-        steps{    script {
-           def dockerImage = docker.build("test:v1.0.0")
-           }
-        }
-
+        def dockerImage = docker.build("test:v1.0.0")
     }
     
     stage('Deploy Image') {
