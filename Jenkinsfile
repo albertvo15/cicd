@@ -1,7 +1,7 @@
 node {
     checkout scm
     stage('start') {
-        sh 'echo start2'
+        sh 'echo start3'
     }
     
     stage('save-env') {
