@@ -1,7 +1,8 @@
 node {
     environment {
       registry = "albertvo/test"
-      registryCredential = ‘docker-hub-credentials’
+      registryCredential = 'dockerhub'
+
       dockerImage = ''
     }
     checkout scm
