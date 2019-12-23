@@ -6,11 +6,14 @@ node {
     }
 
     stage('build-image') {
-        sh 'docker build -t $IMAGE_REPO:$IMAGE_TAG .'
+        sh 'docker build -t test .'
     }
     
+    stage('tag-image') {
+        sh 'docker tag test albertvo/test:latest'
+    }
     stage('push-image') {
-        sh 'gcloud docker -- push $IMAGE_REPO:$IMAGE_TAG'
+        sh 'docker -- push albertvo/test:latest'
     }
     
     archiveArtifacts 'properties'
