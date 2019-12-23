@@ -20,6 +20,7 @@ node {
         withDockerRegistry([ credentialsId: "docker-hub-credentials", url: "" ]) {
           sh 'docker push albertvo/test:latest'
         }
+      }
     }
     
     archiveArtifacts 'properties'
