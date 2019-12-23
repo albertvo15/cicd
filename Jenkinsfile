@@ -14,8 +14,13 @@ node {
     }
 
     stage('build-image') {
-        def dockerImage = docker.build("test:v2.0.0")
+        def dockerImage = docker.build("albertvo/test:v2.0.0")
     }
+
+    stage('tag-image') {
+        sh 'docker tag albertvo/test:v2.0.0 albertvo/test:v2.0.0'
+    }
+
     
     stage('Deploy Image') {
         steps{    script {
