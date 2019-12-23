@@ -15,15 +15,15 @@ RUN go get gopkg.in/mgo.v2 && \
     go get gopkg.in/redis.v3
 
 # Add current working directory
-ADD . /go/src/github.com/Yitsushi/livetogether
+#ADD . /go/src/github.com/Yitsushi/livetogether
 
 # Build it :)
-RUN go install github.com/Yitsushi/livetogether
+#RUN go install github.com/Yitsushi/livetogether
 
 # Every time I start the container I want to rebuild
 # because I mount it when I use it for development
-ENTRYPOINT go install github.com/Yitsushi/livetogether && \
-           /go/bin/livetogether --config=/go/src/github.com/Yitsushi/livetogether/config.json
+#ENTRYPOINT go install github.com/Yitsushi/livetogether && \
+#           /go/bin/livetogether --config=/go/src/github.com/Yitsushi/livetogether/config.json
 
 # Expose where the application wants to listen
-EXPOSE 8080
+EXPOSE 80
