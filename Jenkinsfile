@@ -14,7 +14,7 @@ node {
     }
 
     stage('build-image') {
-        def dockerImage = docker.build("test:v1.0.0")
+        def dockerImage = docker.build("test:v2.0.0")
     }
     
     stage('Deploy Image') {
