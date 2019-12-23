@@ -6,5 +6,10 @@ pipeline {
                 sh 'python --version'
             }
         }
+        stage('Test') {
+            steps {
+                sh 'date'
+            }
+        }
     }
 }
