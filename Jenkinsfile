@@ -1,5 +1,8 @@
 node {
     checkout scm
+    stage('start') {
+        sh 'echo start2'
+    }
     
     stage('save-env') {
         sh 'env > properties'
