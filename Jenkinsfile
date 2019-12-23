@@ -16,7 +16,7 @@ node {
         sh 'docker tag test:v1.0.0 albertvo/test:latest'
     }
     stage('push-image') {
-        sh 'docker -- push albertvo/test:latest'
+        sh 'sudo docker -- push albertvo/test:latest'
     }
     
     archiveArtifacts 'properties'
