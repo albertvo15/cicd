@@ -20,7 +20,7 @@ node {
     }
 
     stage('tag-image') {
-        sh 'docker tag albertvo/test:v3.0.0 albertvo/test:${env.BUILD_ID}'
+        sh 'docker tag "albertvo/test:v3.0.0 albertvo/test:${env.BUILD_ID}"'
     }
     stage('Deploy Image') {
         docker.withRegistry( '', 'dockerhub' ) {
