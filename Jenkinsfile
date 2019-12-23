@@ -13,7 +13,7 @@ node {
     }
     
     stage('tag-image') {
-        sh 'docker tag testv:1.0.0 albertvo/test:v1.0.0'
+        sh 'docker tag test:v1.0.0 albertvo/test:v1.0.0'
     }
     
     archiveArtifacts 'properties'
