@@ -15,11 +15,11 @@ node {
     }
 
     stage('build-image') {
-        dockerImage = docker.build ("albertvo/test:v2.0.0")
+        dockerImage = docker.build ("albertvo/test:v3.0.0")
     }
 
     stage('tag-image') {
-        sh 'docker tag albertvo/test:v2.0.0 albertvo/test:v2.0.0'
+        sh 'docker tag albertvo/test:v3.0.0 albertvo/test:v3.0.0'
     }
     stage('Deploy Image') {
         docker.withRegistry( '', 'dockerhub' ) {
