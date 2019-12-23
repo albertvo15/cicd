@@ -1,19 +1,19 @@
 node {
     checkout scm
-    stage('start') {
-        sh 'echo "start now 3"'
-    }
     
     stage('save-env') {
         sh 'env > properties'
     }
 
     stage('build-image') {
-        sh 'docker build -t test:v1.0.0 .'
+        sh 'docker build -t test .'
     }
     
     stage('tag-image') {
-        sh 'docker tag test:v1.0.0 albertvo/test:latest'
+        sh 'docker tag test albertvo/test:latest'
+    }
+    stage('push-image') {
+        sh 'docker -- push albertvo/test:latest'
     }
     
     archiveArtifacts 'properties'
