@@ -17,7 +17,7 @@ node {
     stage('build-image') {
       steps{
         script {
-          dockerImage = docker.build registry + ":v2.0.0"
+          dockerImage = docker.build ("albertvo/test:v2.0.0")
         }
       }
     }
