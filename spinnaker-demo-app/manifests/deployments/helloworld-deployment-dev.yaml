@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: helloweb
+  labels:
+    app: hello
+  namespace: "${#alphanumerical(execution['trigger']['user'])}-${#alphanumerical(execution['trigger']['type'])}-${#alphanumerical(execution['startTime'])}"
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hello
+      tier: web
+  template:
+    metadata:
+      labels:
+        app: hello
+        tier: web
+    spec:
+      containers:
+      - name: hello-app
+        image: gcr.io/jenkinsdemo/spinnaker-demo-app:latest
+        ports:
+        - containerPort: 8080
+

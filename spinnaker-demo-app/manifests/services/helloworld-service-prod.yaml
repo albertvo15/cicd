@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: helloweb
+  labels:
+    app: hello
+  namespace: prod
+spec:
+  selector:
+    app: hello
+    tier: web
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 8080
+  type: LoadBalancer
+

@@ -1,0 +1,11 @@
+{
+  kind: Namespace,
+  apiVersion: v1,
+  metadata: {
+    name: "${#alphanumerical(execution['trigger']['user'])}-${#alphanumerical(execution['trigger']['type'])}-${#alphanumerical(execution['startTime'])}",
+    labels: {
+      name: "${#alphanumerical(execution['trigger']['user'])}-${#alphanumerical(execution['trigger']['type'])}-${#alphanumerical(execution['startTime'])}"
+    }
+  }
+}
+
