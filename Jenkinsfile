@@ -13,6 +13,9 @@ node {
     stage('save-env') {
         sh 'env > properties'
     }
+    stage('git') {
+         git url: 'https://github.com/albertvo15/cicd.git'
+    }
 
     stage('build-image') {
         dockerImage = docker.build ("albertvo/test:v5.0.0")
