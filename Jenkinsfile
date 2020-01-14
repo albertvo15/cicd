@@ -7,7 +7,7 @@ node {
     checkout scm
     def dockerImage
     stage('start') {
-        sh 'echo start9'
+        sh 'echo start10'
     }
     
     stage('save-env') {
