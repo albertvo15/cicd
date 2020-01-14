@@ -1,27 +1,27 @@
-FROM golang:1.8-alpine
-#ADD . /go/src/hello-app
-#ADD . /go/src/github.com/albertvo15/cicd/hello-app
-#ADD . /go/src/hello-app
-#RUN go install hello-app
-#RUN go install github.com/albertvo15/cicd/hello-app
+FROM golang:1.12 as builder
 
+# Set Environment Variables
+ENV HOME /app
+ENV CGO_ENABLED 0
+ENV GOOS linux
 
+WORKDIR /app
+COPY go.mod go.sum ./
+RUN go mod download
+COPY . .
 
-# Create the proper directory.
-RUN mkdir -p $GOPATH/src/hello-app
-
-# Copy app to the proper directory for building.
-ADD . $GOPATH/src/hello-app
-
-# Set the work directory.
-WORKDIR $GOPATH/src/hello-app
-
-# Run CMD commands.
-RUN go get -d -v ./...
-RUN go install -v ./...
-
+# Build app
+RUN go build -a -installsuffix cgo -o main .
 
 FROM alpine:latest
-COPY --from=0 /go/bin/hello-app .
-ENV PORT 8080
-CMD ["./hello-app"]
+
+RUN apk --no-cache add ca-certificates
+
+WORKDIR /root/
+
+# Copy the pre-built binary file from the previous stage
+COPY --from=builder /app/main .
+
+EXPOSE 8087
+
+CMD [ "./main" ]
